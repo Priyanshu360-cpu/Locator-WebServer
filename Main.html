@@ -66,8 +66,7 @@ Find Me
       function random(){
         var key=document.getElementById("urler").value;
         key=key.split("/")[1];
-        if(key!="")
-{window.location = "/edit/"+key;}else{
+        if(key.localeCompare("")!=0){window.location = "/edit/"+key;}else{
   document.getElementById("urler").value="Enter Correct Url";
 }
       }
