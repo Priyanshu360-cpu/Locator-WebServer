@@ -27,22 +27,39 @@
   border: 0cm;
 }
 .maina{
-  text-shadow: #ff5433;
+  text-shadow: 2px 2px #ff0000;
+  text-decoration-color: aqua;
+  font-size: 32px;
+}
+.boxer{
+  text-align: center;
+}
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
 }
 .boda{
  position: absolute;
  left: 30%;
- top: 28%;
+ top: 38%;
 }
 </style>
 <div class="tempbg">
 <div class="left"></div>
 <div class="boda">
-<div class="maina"><h1>Enter Url</h1></div>
-<textarea id="urler"></textarea>
+<div class="maina"><h1>Welcome to Locator</h1></div>
+<div class="form-group shadow-textarea">
+  
+  <textarea class="form-control z-depth-1" id="urler" rows="2" cols="80" placeholder="Enter Url Here"></textarea>
+</div>
+<h1></h1>
+<div class="boxer">
 <button onclick="random()" id = "random" class="button button1">
-New File
+Find Me
   </button>
+</div>
 </div>
 </div>
   <script>
