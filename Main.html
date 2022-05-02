@@ -10,28 +10,48 @@
   margin: 4px 2px;
   cursor: pointer;
 }
+.tempbg{
+  width:100%;
+  height:100%;
+  background:no-repeat;
+  background-position: center;
+  background:url(https://media.istockphoto.com/vectors/vector-map-with-pin-pointer-illustration-vector-id535913739?k=20&m=535913739&s=612x612&w=0&h=cS_zINbhJ9T9vRlaAc4S_-Yd45f6qs5zliFHZ7KNhFI=);
+}
 .button1 {background-color: #4CAF50;}
 .left{
-  background-color:blue;
-  width:1190px;
+  background:url(https://cdn.dribbble.com/users/1514097/screenshots/3722746/location-loading.gif);
+  background-position:center;
+  width:100%;
   height: 50px;
   position: relative;
   border: 0cm;
 }
+.maina{
+  text-shadow: #ff5433;
+}
+.boda{
+ position: absolute;
+ left: 30%;
+ top: 28%;
+}
 </style>
+<div class="tempbg">
 <div class="left"></div>
-<h1>Main Page</h1>
-
+<div class="boda">
+<div class="maina"><h1>Enter Url</h1></div>
+<textarea id="urler"></textarea>
 <button onclick="random()" id = "random" class="button button1">
 New File
   </button>
+</div>
+</div>
   <script>
       function random(){
-        var key = '';
-        const allowed ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
-			key = key+allowed.charAt(Math.floor(Math.random() * allowed.length));
-		}
-window.location = "/edit/"+key;
+        var key=document.getElementById("urler").value;
+        key=key.split("/")[1];
+        if(key!="")
+{window.location = "/edit/"+key;}else{
+  document.getElementById("urler").value="Enter Correct Url";
+}
       }
   </script>
