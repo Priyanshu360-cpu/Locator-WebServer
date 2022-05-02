@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	"regexp"
-
+	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,6 +31,7 @@ func (p *Page) save() error {
 func MainHandler(w http.ResponseWriter, r *http.Request, title string) {
 	var templates = template.Must(template.ParseFiles("Main.html"))
 	templates.Execute(w, "Main.html")
+	fmt.Print("done\n")
 }
 func loadPage(title string) (*Page, error) {
 
