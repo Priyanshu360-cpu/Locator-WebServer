@@ -109,10 +109,12 @@ Find Me
         key=key.split("/")[1];
         try{
         if(key.localeCompare("")!=0){window.location = "/edit/"+key;}else{
-  document.getElementById("urler").value="Enter Correct URL";
+          document.getElementById("urler").value=""; 
+          alert("Enter Correct URL")
 }
         }catch{
-          document.getElementById("urler").value="Enter Correct URL"; 
+          document.getElementById("urler").value=""; 
+          alert("Enter Correct URL")
         }
       }
   </script>
