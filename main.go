@@ -4,10 +4,16 @@ import (
 	"html/template"
 	"io/ioutil"
 	"log"
+	"context"
 	"net/http"
 	"regexp"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo/readpref"
+  
+    "go.mongodb.org/mongo-driver/mongo"
+    "go.mongodb.org/mongo-driver/mongo/options"
+
 )
 
 type Page struct {
@@ -107,6 +113,16 @@ func IndexHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Hand
 	}
 }
 func main() {
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(".."))
+	if err == nil{
+		fmt.Print("Mongo Db Connected\n")
+	}
+	if err != nil {
+			panic(err)
+	}
+	if err := client.Ping(context.TODO(), readpref.Primary()); err != nil {
+        panic(err)
+}
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
