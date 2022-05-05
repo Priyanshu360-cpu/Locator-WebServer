@@ -20,6 +20,8 @@ type Page struct {
 	Title  string
 	Body   []byte
 	CoBody []byte
+	Latitude float64
+	Longitude float64
 }
 type GinaOut struct {
 	Id   string
@@ -40,7 +42,6 @@ func MainHandler(w http.ResponseWriter, r *http.Request, title string) {
 	fmt.Print("done\n")
 }
 func loadPage(title string) (*Page, error) {
-
 	filename := title + ".txt"
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -63,7 +64,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 func editHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 	if err != nil {
-		p = &Page{Title: title}
+		p = &Page{Title: title, Latitude: -25.344,Longitude: 131.031 }
 	}
 	renderTemplate(w, "edit", p)
 }
@@ -113,7 +114,7 @@ func IndexHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Hand
 	}
 }
 func main() {
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(".."))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(""))
 	if err == nil{
 		fmt.Print("Mongo Db Connected\n")
 	}
